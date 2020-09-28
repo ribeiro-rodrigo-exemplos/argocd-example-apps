@@ -9,10 +9,12 @@ metadata:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
-    namespace: kustomize-guestbook
+    namespace: default
     name: {{ .Values.spec.destination.name }}
   project: default
   source:
     path: kustomize-guestbook
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated: {}
